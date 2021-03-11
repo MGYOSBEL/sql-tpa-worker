@@ -1,0 +1,86 @@
+{
+  "Tables": [
+    {
+      "Name": "tt_l2_ext_rep_eaf_data",
+      "Columns": [
+        {
+          "Name": "MSG_COUNTER",
+          "Type": "integer"
+        },
+        {
+          "Name": "AREA_ID",
+          "Type": "integer"
+        },
+        {
+          "Name": "STATION_CODE",
+          "Type": "integer"
+        },
+        {
+          "Name": "MSG_DATETIME",
+          "Type": "date"
+        },
+        {
+          "Name": "MSG_STATUS",
+          "Type": "integer"
+        },
+        {
+          "Name": "REP_HEAT_ID",
+          "Type": "string"
+        },
+        {
+          "Name": "REP_LADLE_ID",
+          "Type": "string"
+        },
+        {
+          "Name": "REP_START_DATE",
+          "Type": "date"
+        },
+        {
+          "Name": "REP_STOP_DATE",
+          "Type": "date"
+        },
+        {
+          "Name": "REP_CHARGE_WGT",
+          "Type": "integer"
+        },
+        {
+          "Name": "REP_TAPPED_WGT",
+          "Type": "integer"
+        },
+        {
+          "Name": "REP_TOTAL_O2",
+          "Type": "integer"
+        },
+        {
+          "Name": "REP_TOTAL_CH4",
+          "Type": "integer"
+        },
+        {
+          "Name": "REP_TOTAL_ENERGY",
+          "Type": "integer"
+        }
+      ],
+      "PrimaryKey": [
+        "MSG_COUNTER"
+      ],
+      "Options": {
+        "SourceDateFormat": "'DD-MM-YY\"T\"HH24:MI:SS'",
+        "OutputDateFormat": "'YYYY-MM-DD\"T\"HH24:MI:SS\"Z\"'"
+      },
+      "WhereCondition":
+        {
+          "Column": "MSG_STATUS",
+          "Operator": "=",
+          "Value": "1"
+        },
+      "UpdateStatement":
+      {
+        "Column": "MSG_STATUS",
+        "Operator": "=",
+        "Value": "2"
+      }
+
+    }
+  ]
+}
+
