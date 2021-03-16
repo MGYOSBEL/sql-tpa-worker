@@ -1,30 +1,21 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"github.com/MGYOSBEL/querybuilder"
-	"io/ioutil"
 	"os"
+
+	"github.com/MGYOSBEL/querybuilder"
 )
 
 func main() {
-	data, err := ioutil.ReadFile("test.json")
+	config, err := querybuilder.LoadConfig("test.json")
 	if err != nil {
-		fmt.Println("Error reading the file")
+		fmt.Println("Error loading the config file")
 		os.Exit(1)
 	}
 
-	var config querybuilder.Config
-	err = json.Unmarshal(data, &config)
-
-	fmt.Printf("%s", data)
-
-
-
-
-	for _, table := range config.Tables  {
-		query := querybuilder.SelectColumnsFromTableWhereCondition(table.Columns, table.Name, table.WhereCondition, table.Options )
+	for _, table := range config.Tables {
+		query := querybuilder.SelectColumnsFromTableWhereCondition(table.Columns, table.Name, table.WhereCondition, table.Options)
 		fmt.Println("SELECT query: ")
 		fmt.Println(query)
 
